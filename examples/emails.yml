@@ -1,0 +1,22 @@
+#------------------------------------
+# Master Config
+#------------------------------------
+- index: "dg-emails"
+  config:
+    cycles: 10
+    entries_per_cycle: 10
+    entry_variance: 0
+    final_orientation: column
+  dataset:
+  - datatype: date
+    field: "@timestamp"
+    format: "%Y-%m-%d"
+    increment_by: month
+    increment_factor: 1
+#------------------------------------
+# Email Options
+#------------------------------------
+  - datatype: email
+    field: random_emails
+    name_length: 9
+    variance: 3

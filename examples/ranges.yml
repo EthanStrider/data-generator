@@ -1,0 +1,67 @@
+#------------------------------------
+# Master Config
+#------------------------------------
+- index: "dg-ranges"
+  config:
+    cycles: 100
+    entries_per_cycle: 10
+    entry_variance: 0
+    final_orientation: column
+  dataset:
+  - datatype: date
+    field: "@timestamp"
+    format: "%Y-%m-%dT%H:%M:%S.%fZ"
+    increment_by: day
+    increment_factor: 1
+#------------------------------------
+# Range Options
+#------------------------------------
+  - datatype: "range"
+    field: integer_range
+    max: 10
+    min: 0
+    absolute: True
+    divisor: 1
+    rounding_decimal_place: 0
+  - datatype: "range"
+    field: float_range
+    max: 10
+    min: 0
+    absolute: True
+    divisor: 1
+    rounding_decimal_place: 2
+  - datatype: "range"
+    field: absolute_no_divisor
+    max: 10
+    min: -10
+    absolute: True
+    divisor: 1
+    rounding_decimal_place: 0
+  - datatype: "range"
+    field: no_divisor
+    max: 10
+    min: 0
+    absolute: False
+    divisor: 1
+    rounding_decimal_place: 0
+  - datatype: "range"
+    field: absolute_with_divisor
+    max: 100
+    min: -100
+    absolute: True
+    divisor: 10
+    rounding_decimal_place: 0
+  - datatype: "range"
+    field: with_divisor
+    max: 100
+    min: 0
+    absolute: False
+    divisor: 10
+    rounding_decimal_place: 0
+  - datatype: "range"
+    field: percentage
+    max: 1
+    min: -1
+    absolute: False
+    divisor: 1
+    rounding_decimal_place: 2

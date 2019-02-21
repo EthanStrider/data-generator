@@ -1,0 +1,26 @@
+#------------------------------------
+# Master Config
+#------------------------------------
+- index: "dg-booleans"
+  config:
+    cycles: 100
+    entries_per_cycle: 1
+    entry_variance: 0
+    final_orientation: column
+  dataset:
+  - datatype: date
+    field: "@timestamp"
+    format: "%Y-%m-%dT%H:%M:%S.%fZ"
+    increment_by: day
+    increment_factor: 1
+#------------------------------------
+# Boolean Options
+#------------------------------------
+  - datatype: "boolean"
+    field: sans_variance
+    percentage_true: 50
+    variance: 0
+  - datatype: "boolean"
+    field: with_variance
+    percentage_true: 50
+    variance: 25

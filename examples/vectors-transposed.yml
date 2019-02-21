@@ -1,0 +1,67 @@
+#------------------------------------
+# Master Config
+#------------------------------------
+- index: "dg-vectors-transposed"
+  config:
+    cycles: 100
+    entries_per_cycle: 1
+    entry_variance: 0
+    final_orientation: doc
+    remap_fields:
+      linear_start_finish_vector: vector_type
+      linear_growth_rate_vector: vector_type
+      linear_variance_vector: vector_type
+      compound_vector: vector_type
+      exponential_vector: vector_type
+      per_cycle_vector: vector_type
+  dataset:
+  - datatype: date
+    field: "@timestamp"
+    format: "%Y-%m-%dT%H:%M:%S.%fZ"
+    increment_by: day
+    increment_factor: 1
+#------------------------------------
+# Master Config
+#------------------------------------
+  - datatype: vector
+    field: linear_start_finish_vector
+    start: 0
+    finish: 100
+    growth_rate: calculate
+    growth_type: linear
+    variance: 0
+  - datatype: vector
+    field: linear_growth_rate_vector
+    start: 100
+    finish: calculate
+    growth_rate: -1
+    growth_type: linear
+    variance: 0
+  - datatype: vector
+    field: linear_variance_vector
+    start: 10
+    finish: 1000
+    growth_rate: calculate
+    growth_type: linear
+    variance: 10
+  - datatype: vector
+    field: compound_vector
+    start: 10
+    finish: 1000
+    growth_rate: calculate
+    growth_type: compound
+    variance: 0
+  - datatype: vector
+    field: exponential_vector
+    start: 10
+    finish: 1000
+    growth_rate: calculate
+    growth_type: exponential
+    variance: 0
+  - datatype: vector
+    field: per_cycle_vector
+    start: 1
+    finish: calculate
+    growth_rate: 1
+    growth_type: per_cycle
+    variance: 0

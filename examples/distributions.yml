@@ -1,0 +1,80 @@
+#------------------------------------
+# Master Config
+#------------------------------------
+- index: "dg-distributions"
+  config:
+    cycles: 100
+    entries_per_cycle: 10
+    entry_variance: 0
+    final_orientation: column
+  dataset:
+  - datatype: date
+    field: "@timestamp"
+    format: "%Y-%m-%dT%H:%M:%S.%fZ"
+    increment_by: day
+    increment_factor: 1
+#------------------------------------
+# Distribution Options
+#------------------------------------
+  - datatype: "distribution-items"
+    field: words
+    distribution:
+      fifty: 5
+      thirty: 3
+      twenty: 2
+  - datatype: "distribution-items"
+    field: numbers
+    distribution:
+      50: 5
+      30: 3
+      20: 2
+  - datatype: "distribution-normal"
+    field: normal_integer_with_no_anomolies
+    distribution:
+      min: 1
+      max: 100
+      size: 100
+      rounding_decimal_place: 0
+    anomolies:
+      min: 0
+      max: 0
+      frequency: 0
+  - datatype: "distribution-normal"
+    field: normal_integer_with_anomolies
+    distribution:
+      min: 1
+      max: 100
+      size: 100
+      rounding_decimal_place: 0
+    anomolies:
+      min: 500
+      max: 1000
+      frequency: 0.0005
+  - datatype: "distribution-normal"
+    field: normal_percentage
+    distribution:
+      min: 0
+      max: 1
+      size: 100
+      rounding_decimal_place: 2
+    anomolies:
+      min: 0
+      max: 0
+      frequency: 0
+  - datatype: "distribution-hours"
+    field: "timestamps"
+    format: "%Y-%m-%dT%H:%M:%S.%fZ"
+    variance: 90
+    distribution:
+      23: 1
+      21: 3
+      19: 5
+      17: 8
+      15: 5
+      13: 4
+      11: 4
+      9: 5
+      7: 8
+      5: 3
+      3: 1
+      1: 1

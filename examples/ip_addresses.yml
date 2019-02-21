@@ -1,0 +1,20 @@
+#------------------------------------
+# Master Config
+#------------------------------------
+- index: "dg-ip-addresses"
+  config:
+    cycles: 100
+    entries_per_cycle: 10
+    entry_variance: 0
+    final_orientation: column
+  dataset:
+  - datatype: date
+    field: "@timestamp"
+    format: "%Y-%m-%dT%H:%M:%S.%fZ"
+    increment_by: day
+    increment_factor: 1
+#------------------------------------
+# IP Adress Options
+#------------------------------------
+  - datatype: "ip_address"
+    field: "ip"

@@ -1,0 +1,74 @@
+- index: 'dg-web-traffic'
+  config:
+    cycles: 100
+    entries_per_cycle: 100
+    entry_variance: 25
+    final_orientation: column
+  dataset:
+  - datatype: "distribution-hours"
+    field: "@timestamp"
+    format: "%Y-%m-%dT%H:%M:%S.%fZ"
+    variance: 90
+    distribution:
+      23: 1
+      21: 3
+      19: 5
+      17: 8
+      15: 5
+      13: 4
+      11: 4
+      9: 5
+      7: 8
+      5: 3
+      3: 1
+      1: 1
+  - datatype: "date"
+    field: "date-day"
+    format: "%Y-%m-%d"
+    increment_by: day
+    increment_factor: 1
+  - datatype: "date"
+    field: "date-month"
+    format: "%Y-%m"
+    increment_by: day
+    increment_factor: 1
+  - datatype: "ip_address"
+    field: "ip"
+  - datatype: "boolean"
+    field: "email_registered"
+    percentage_true: 46
+    variance: 7
+  - datatype: "distribution-items"
+    field: pages_visited
+    distribution:
+      1: 50
+      2: 25
+      3: 12
+      4: 6
+      5: 3
+      6: 2
+      7: 1
+  - datatype: "boolean"
+    field: logged_in
+    percentage_true: 23
+    variance: 13
+  - datatype: "range"
+    field: session_length
+    max: 99
+    min: -32
+    absolute: True
+    divisor: 3.17
+    rounding_decimal_place: 2
+  - datatype: "distribution-items"
+    field: "origin"
+    distribution:
+      google: 12
+      facebook: 4
+      instagram: 1
+      twitter: 2
+      email: 1
+      other: 1
+  - datatype: percentage
+    field: loss_rate
+    min: 0.002
+    max: 0.043
